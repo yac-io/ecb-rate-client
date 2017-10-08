@@ -47,6 +47,17 @@ public class FxQuoteRequest implements Serializable {
         return quoteCurrency;
     }
 
+    void validate() {
+        if (baseCurrency == null) {
+            throw new IllegalArgumentException("FxQuoteRequest.baseCurrency must not be null");
+        }
+
+        if (quoteCurrency == null) {
+            throw new IllegalArgumentException("FxQuoteRequest.quoteCurrency must not be null");
+        }
+
+    }
+
     /**
      * Builder class to create an instance of a {@link FxQuoteRequest}
      */

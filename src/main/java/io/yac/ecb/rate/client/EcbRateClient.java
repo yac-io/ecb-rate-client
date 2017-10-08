@@ -1,7 +1,9 @@
 package io.yac.ecb.rate.client;
 
+import io.yac.ecb.rate.client.exception.UnsupportedCurrencyException;
+
 public interface EcbRateClient {
 
-    FxQuote getQuotation(FxQuoteRequest fxQuoteRequest);
+    FxQuote getQuote(FxQuoteRequest fxQuoteRequest) throws UnsupportedCurrencyException;
 
 }
