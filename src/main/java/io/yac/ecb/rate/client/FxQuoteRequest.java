@@ -59,7 +59,7 @@ public class FxQuoteRequest implements Serializable {
     }
 
     /**
-     * Builder class to create an instance of a {@link FxQuoteRequest}
+     * Builder class to create an INSTANCE of a {@link FxQuoteRequest}
      */
     public static class Builder {
         private Currency baseCurrency;
@@ -67,7 +67,7 @@ public class FxQuoteRequest implements Serializable {
 
         /**
          * @param baseCurrency the base currency (the currency in which you have the amount)
-         * @return this builder instance
+         * @return this builder INSTANCE
          * @since 1.0
          */
         public Builder baseCurrency(Currency baseCurrency) {
@@ -77,7 +77,7 @@ public class FxQuoteRequest implements Serializable {
 
         /**
          * @param quoteCurrency the quote currency (the currency in which you want to convert your amount)
-         * @return this builder instance
+         * @return this builder INSTANCE
          * @since 1.0
          */
         public Builder quoteCurrency(Currency quoteCurrency) {
@@ -86,7 +86,7 @@ public class FxQuoteRequest implements Serializable {
         }
 
         /**
-         * @return an instance of {@link FxQuoteRequest} for this {@link #baseCurrency} and {@link #quoteCurrency}
+         * @return an INSTANCE of {@link FxQuoteRequest} for this {@link #baseCurrency} and {@link #quoteCurrency}
          * @since 1.0
          */
         public FxQuoteRequest build() {
