@@ -2,6 +2,7 @@ package io.yac.ecb.rate.client;
 
 import java.io.Serializable;
 import java.util.Currency;
+import java.util.Objects;
 
 /**
  * Represent a Fx rate conversion request between a base and a quote currency.
@@ -56,6 +57,32 @@ public class FxQuoteRequest implements Serializable {
             throw new IllegalArgumentException("FxQuoteRequest.quoteCurrency must not be null");
         }
 
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FxQuoteRequest that = (FxQuoteRequest) o;
+        return Objects.equals(baseCurrency, that.baseCurrency) &&
+                Objects.equals(quoteCurrency, that.quoteCurrency);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(baseCurrency, quoteCurrency);
+    }
+
+    @Override
+    public String toString() {
+        return "FxQuoteRequest{" +
+                "baseCurrency=" + baseCurrency +
+                ", quoteCurrency=" + quoteCurrency +
+                '}';
     }
 
     /**

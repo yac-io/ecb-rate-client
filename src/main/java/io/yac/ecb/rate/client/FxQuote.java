@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Currency;
+import java.util.Objects;
 
 /**
  * Represent a currency pair with the Foreign Exchange rate between the two currencies as published by the European Central Bank
@@ -69,6 +70,34 @@ public class FxQuote implements Serializable {
      */
     public BigDecimal getRate() {
         return rate;
+    }
+
+
+    @Override public String toString() {
+        return "FxQuote{" +
+                "baseCurrency=" + baseCurrency +
+                ", quoteCurrency=" + quoteCurrency +
+                ", quoteDate=" + quoteDate +
+                ", rate=" + rate +
+                '}';
+    }
+
+    @Override public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        FxQuote fxQuote = (FxQuote) o;
+        return Objects.equals(baseCurrency, fxQuote.baseCurrency) &&
+                Objects.equals(quoteCurrency, fxQuote.quoteCurrency) &&
+                Objects.equals(quoteDate, fxQuote.quoteDate) &&
+                Objects.equals(rate, fxQuote.rate);
+    }
+
+    @Override public int hashCode() {
+        return Objects.hash(baseCurrency, quoteCurrency, quoteDate, rate);
     }
 
     /**
