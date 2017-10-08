@@ -1,4 +1,6 @@
 # ecb-rate-client
+[![Build Status](https://travis-ci.org/yac-io/ecb-rate-client.svg?branch=master)](https://travis-ci.org/yac-io/ecb-rate-client)
+
 This library is a simple wrapper around the [Daily exchange rate xml](https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) publish by the European Central Bank.
 
 It provides a simple features to get the rate between two currencies as long as they are listed in the aforementioned xml.
