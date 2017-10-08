@@ -52,7 +52,7 @@ junitPlatform {
 uploadArchives {
     repositories.mavenDeployer {
         configuration = configurations.deployerJars
-        repository(url: "packagecloud+https://packagecloud.io/yacio/release") {
+        repository(url: "packagecloud+https://packagecloud.io/yacio/releases") {
             authentication(password: "$System.env.PACKAGECLOUD_TOKEN")
         }
     }
