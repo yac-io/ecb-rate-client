@@ -9,7 +9,7 @@ buildscript {
 }
 
 group 'io.yac'
-version '1.0-SNAPSHOT'
+version "$System.env.TRAVIS_TAG"
 
 apply plugin: 'java'
 apply plugin: 'idea'
