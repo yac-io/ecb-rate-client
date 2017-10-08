@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.nio.charset.Charset;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 class EcbXmlWrapper {
 
@@ -51,6 +53,22 @@ class EcbXmlWrapper {
         } catch (XPathExpressionException e) {
             throw new IllegalStateException(e);
         }
+    }
+
+    public LocalDate getPublishDate() {
+        try {
+            return LocalDate.parse(evaluateStringXpath("//Cube/@time"), DateTimeFormatter.ISO_LOCAL_DATE);
+        } catch (XPathExpressionException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    private String evaluateStringXpath(String xpathStr) throws XPathExpressionException {
+        XPathFactory xPathfactory = XPathFactory.newInstance();
+        XPath xpath = xPathfactory.newXPath();
+        XPathExpression expr = xpath.compile(xpathStr);
+        return (String) expr.evaluate(document, XPathConstants.STRING);
+
     }
 
     private boolean nodeExist(String xpathStr) throws XPathExpressionException {

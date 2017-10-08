@@ -6,13 +6,14 @@ import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class EcbXmlWrapperTest {
 
-    private static final String SAMPLE_XML_FILE_NAME = "../resources/eurofxref-daily-sample.xml";
+    private static final String SAMPLE_XML_FILE_NAME = "eurofxref-daily-sample.xml";
 
     private static InputStream readXmlFile() {
         return EcbXmlWrapper.class.getClassLoader().getResourceAsStream(SAMPLE_XML_FILE_NAME);
@@ -39,6 +40,17 @@ class EcbXmlWrapperTest {
 
         assertEquals("The currency {AAA} is not listed in the ECB rate file",
                 unsupportedCurrencyException.getMessage());
+    }
+
+    @Test
+    @DisplayName("getPublishDate returns the date from the xml")
+    void testGetPublishDate() throws Exception {
+        LocalDate expectedDate = LocalDate.of(2017, 10, 6);
+
+        EcbXmlWrapper wrapper = new EcbXmlWrapper(readXmlFile());
+        assertEquals(expectedDate, wrapper.getPublishDate());
+
+
     }
 
 }
