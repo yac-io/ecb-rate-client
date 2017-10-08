@@ -49,13 +49,11 @@ junitPlatform {
     platformVersion '1.0.0'
 }
 
-packagCloudTocken = "$System.env.PACKAGECLOUD_TOKEN"
-
 uploadArchives {
     repositories.mavenDeployer {
         configuration = configurations.deployerJars
         repository(url: "packagecloud+https://packagecloud.io/yacio/release") {
-            authentication(password: packagCloudTocken)
+            authentication(password: "$System.env.PACKAGECLOUD_TOKEN")
         }
     }
 }
