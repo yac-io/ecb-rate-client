@@ -4,3 +4,10 @@ jdk:
   - oraclejdk8
   - oraclejdk9
   - openjdk8
+
+deploy:
+  provider: script
+  script: "./gradlew uploadArchives"
+  skip_cleanup: true
+  on:
+    tags: true
